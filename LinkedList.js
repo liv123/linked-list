@@ -12,7 +12,7 @@ List.prototype = {
     */
     makeNode : function() {
         return {data: null, next: null};
-    },
+},
 
     /*
         Method: addAtEnd
@@ -62,14 +62,39 @@ List.prototype = {
     */
     insertAtHead: function(data) {
         // Enter code here!
+            // start becomes a node
+            var bob = this.makeNode();
+            //attaching Bob to his data. the  = data is from the parameter (data)
+            bob.data = data;
+            //connecting bob with the next guy, who used to be at the front
+            bob.next = this.start;
+            //giving the start hat to Bob
+            this.start = bob; 
+            ///dont forget to call it before print at the bottom where 
+            //other stuff is called
     },
 
     /*
         Method: length
         Traverse the list. Return the amount of Nodes in the list.
     */
-    length: function() {
-        // Enter code here!
+    length: function(data) {
+        // Enter code here! use a while loop
+       var count = 0;
+       var current = this.start;
+       if (current) {
+            count = 1;
+            while (current.next !== null) {
+                count++;
+                current = current.next;
+
+            }
+       }
+       else { 
+        return 0;
+       }
+      return count; 
+        
     },
 
     /*
@@ -87,7 +112,7 @@ List.prototype = {
         Example: f(current);
     */
     each: function(f) {
-        // Enter code here!
+        // Enter code here! curren = curret.next
     },
 
     /*
@@ -120,10 +145,11 @@ List.prototype = {
         Method: delete
         Traverse the list, find the node with the corresponding data,
         and remove that node. List must still be fully intact after
-        you remove the node!
+        you remove the node! data(objecttoinsert, 1number to insert after - this would be 3rd) redirect old next
+       
     */
     delete: function(data) {
-        // Enter code here!
+        // Enter code here!  3.next 5
     }
 }
 
@@ -135,5 +161,6 @@ while(i <= 20) {
     LinkedList.addAtEnd(i);
     i+=2;
 }
-
+console.log(LinkedList.length())
+// LinkedList.insertAtHead(7);
 LinkedList.print();
